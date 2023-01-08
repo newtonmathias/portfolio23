@@ -1,43 +1,61 @@
+import project1 from "../assets/portfolio1.png";
+import project2 from "../assets/portfolio2.png";
+import project3 from "../assets/portfolio3.png";
+import project4 from "../assets/portfolio4.png";
+import project5 from "../assets/portfolio5.png";
 import LineGradient from "../components/LineGradient";
 import { motion } from "framer-motion";
+import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";
+import useMediaQuery from "../hooks/useMediaQuery";
 
-const container = {
-  hidden: {},
-  visible: {
-    transition: {
-      staggerChildren: 0.2,
-    },
+const projects = [
+  {
+    id: 1,
+    image: project3,
+    title: "Ecommerce admin dashboard",
+    desc: "An ecommerce admin dashboard is a web application that provides tools and features for managing and monitoring an online store. It allows store owners and administrators to view and analyze sales data with graphs and charts, manage product listings, process orders and shipments, and track customer information. ",
+    tech: ["ReactJS", "NodeJS", "Redux", "MongoDB", "MUI"],
+    demo: "https://newton-dashboard.onrender.com/",
   },
-};
-
-const projectVariant = {
-  hidden: { opacity: 0, scale: 0.8 },
-  visible: { opacity: 1, scale: 1 },
-};
-
-const Project = ({ title }) => {
-  const overlayStyles = `absolute h-full w-full opacity-0 hover:opacity-90 transition duration-500
-    bg-grey z-30 flex flex-col justify-center items-center text-center p-16 text-deep-blue`;
-  const projectTitle = title.split(" ").join("-").toLowerCase();
-
-  return (
-    <motion.div variants={projectVariant} className="relative">
-      <div className={overlayStyles}>
-        <p className="text-2xl font-playfair">{title}</p>
-        <p className="mt-7">
-          Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Nulla
-          porttitor accumsan tincidunt.
-        </p>
-      </div>
-      <img src={`../assets/${projectTitle}.jpeg`} alt={projectTitle} />
-    </motion.div>
-  );
-};
+  {
+    id: 2,
+    image: project1,
+    title: "E-healthcare",
+    desc: "E-healthcare is a web application that allowsusers to search for doctors based on their location, specialty, and availability. Users can book an appointment and receive medical consultations via video call or chat or book in-person meeting.The platform also provides features such as electronic medical records, prescription management, and secure communication between doctors and patients.",
+    tech: ["NextJS", "Redux", "MongoDB", "Stripe", "cloudinary"],
+    demo: "https://ehealthcare-murex.vercel.app/",
+  },
+  {
+    id: 3,
+    image: project2,
+    title: "A video game landing page",
+    desc: "This is a video game landing page that serves as an introduction to a specific video game. It typically includes information about the game, such as its release date, developer, and gameplay features. It may also include screenshots or trailers to give visitors a sense of what the game looks and plays like.",
+    tech: ["NextJS", "Tailwind CSS", "Framer Motion"],
+    demo: "https://realmshowdown.vercel.app/",
+  },
+  {
+    id: 4,
+    image: project5,
+    title: "Fitness Page",
+    desc: "A professional and engaging landing page that effectively communicates the benefits of the fitness product or service and encourages users to take action. By using technologies such as ReactJS, Typescript, Tailwind CSS, and Framer Motion, the landing page delivers a seamless and effective user experience for visitors.",
+    tech: ["ReactJS", "Typescript", "Tailwind CSS", "Framer Motion"],
+    demo: "https://fitress.pages.dev/",
+  },
+  {
+    id: 5,
+    image: project4,
+    title: "Cyber Security Blog",
+    desc: "A static cyber security blog built with Typescript, Nextjs, and Sanity. It is easy to publish content using the embedded studio and has live preview before publishing. It is blazing fast as it uses  Incremental Static Regeneration that enables you to use static-generation on a per-page basis, without needing to rebuild the entire site ",
+    tech: ["NextJS", "Typescript", "Tailwind CSS", "Sanity V3"],
+    demo: "https://cyberblog-rho.vercel.app/",
+  },
+];
 
 const Projects = () => {
+  const isDesktop = useMediaQuery("(min-width: 768px)");
+
   return (
-    <section id="projects" className="pt-48 pb-48">
-      {/* HEADINGS */}
+    <div className="pt-10 pb-24">
       <motion.div
         className="md:w-2/5 mx-auto text-center"
         initial="hidden"
@@ -63,43 +81,97 @@ const Projects = () => {
           purus nec eget eleifend ut elit.
         </p>
       </motion.div>
-
-      {/* PROJECTS */}
-      <div className="flex justify-center">
-        <motion.div
-          className="sm:grid sm:grid-cols-3"
-          variants={container}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.2 }}
-        >
-          {/* ROW 1 */}
-          <div
-            className="flex justify-center text-center items-center p-10 bg-red
-              max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold"
-          >
-            BEAUTIFUL USER INTERFACES
-          </div>
-          <Project title="Project 1" />
-          <Project title="Project 2" />
-
-          {/* ROW 2 */}
-          <Project title="Project 3" />
-          <Project title="Project 4" />
-          <Project title="Project 5" />
-
-          {/* ROW 3 */}
-          <Project title="Project 6" />
-          <Project title="Project 7" />
-          <div
-            className="flex justify-center text-center items-center p-10 bg-blue
-              max-w-[400px] max-h-[400px] text-2xl font-playfair font-semibold"
-          >
-            SMOOTH USER EXPERIENCE
-          </div>
-        </motion.div>
-      </div>
-    </section>
+      {isDesktop
+        ? projects.map((project) =>
+            project.id % 2 == 0 ? (
+              <div
+                className="flex items-center justify-between"
+                key={project.id}
+              >
+                <div className="basis-1/2 bg-blue z-1 hover:bg-transparent transition duration-500 rounded-md">
+                  <a href={project.demo} target="_blank" rel="noreferrer">
+                    <img
+                      src={project.image}
+                      alt="project1"
+                      className=" opacity-70"
+                    />
+                  </a>
+                </div>
+                <div className="basis-1/2 flex flex-col items-end justify-between gap-5">
+                  <p className="text-xl text-red">Featured Project</p>
+                  <p className="text-2xl">{project.title}</p>
+                  <p className="bg-dark-blue p-4 -ml-10 rounded-md z-30 shadow-2xl border-2 border-dark-blue">
+                    {project.desc}
+                  </p>
+                  <p className="text-dark-grey flex items-center justify-between gap-2">
+                    {project.tech.map((item) => (
+                      <p>{item}</p>
+                    ))}
+                  </p>
+                  <a href={project.demo} target="_blank" rel="noreferrer">
+                    <ArrowTopRightOnSquareIcon className="h-6 w-6" />
+                  </a>
+                </div>
+              </div>
+            ) : (
+              <div
+                className="flex my-20 items-center justify-between"
+                key={project.id}
+              >
+                <div className="basis-1/2 flex flex-col items-start justify-between gap-5">
+                  <p className="text-xl text-red">Featured Project</p>
+                  <p className="text-2xl">{project.title}</p>
+                  <p className="bg-dark-blue p-4 -mr-10 rounded-md z-30 shadow-2xl border-2 border-dark-blue">
+                    {project.desc}
+                  </p>
+                  <p className="text-dark-grey flex items-center justify-between gap-2">
+                    {project.tech.map((item) => (
+                      <p>{item}</p>
+                    ))}
+                  </p>
+                  <a href={project.demo} target="_blank" rel="noreferrer">
+                    <ArrowTopRightOnSquareIcon className="h-6 w-6" />
+                  </a>
+                </div>
+                <div className="basis-1/2 bg-blue z-1 hover:bg-transparent transition duration-500 rounded-md">
+                  <a href={project.demo} target="_blank" rel="noreferrer">
+                    <img
+                      src={project.image}
+                      alt="project1"
+                      className=" opacity-70"
+                    />
+                  </a>
+                </div>
+              </div>
+            )
+          )
+        : projects.map((project) => (
+            <div
+              key={project.id}
+              className=" flex relative flex-col gap-5 bg-dark-blue rounded-md shadow-2xl"
+            >
+              <p className="text-xl text-red">Featured Project</p>
+              <div className="z-10">
+                <h1 className="text-3xl font-bold">{project.title}</h1>
+                <p>{project.desc}</p>
+              </div>
+              <img src={project.image} className="absolute z-1 opacity-25" />
+              <p className="text-dark-grey flex items-center justify-between gap-2">
+                {project.tech.map((item) => (
+                  <p>{item}</p>
+                ))}
+              </p>
+              <a
+                href={project.demo}
+                target="_blank"
+                rel="noreferrer"
+                className="items-end"
+              >
+                <ArrowTopRightOnSquareIcon className="h-6 w-6 mb-2" />
+              </a>
+            </div>
+          ))}
+    </div>
   );
 };
 
