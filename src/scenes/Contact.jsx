@@ -1,24 +1,36 @@
 import LineGradient from "../components/LineGradient";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import contactImage from "../assets/contact-image.jpeg";
-const Contact = () => {
-  const {
-    register,
-    trigger,
-    formState: { errors },
-  } = useForm();
+import contactImage from "../assets/contact.jpg";
+import React, { useRef } from "react";
+import emailjs from "emailjs-com";
 
-  const onSubmit = async (e) => {
-    console.log("~ e", e);
-    const isValid = await trigger();
-    if (!isValid) {
-      e.preventDefault();
-    }
+const Contact = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm(
+        "service_z0j25dq",
+        "template_qftrg52",
+        form.current,
+        "MA8057wIRyKE4i_kn"
+      )
+      .then(
+        (result) => {
+          console.log(result.text);
+        },
+        (error) => {
+          console.log(error.text);
+        }
+      );
+    e.target.reset();
   };
 
   return (
-    <section id="contact" className="contact py-48">
+    <section id="contact" className="contact py-32">
       {/* HEADINGS */}
       <motion.div
         initial="hidden"
@@ -68,43 +80,22 @@ const Contact = () => {
           }}
           className="basis-1/2 mt-10 md:mt-0"
         >
-          <form
-            target="_blank"
-            onSubmit={onSubmit}
-            action="https://formsubmit.co/el/juxohi"
-            method="POST"
-          >
+          <form ref={form} onSubmit={sendEmail}>
             <input
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3"
               type="text"
-              placeholder="NAME"
-              {...register("name", {
-                required: true,
-                maxLength: 100,
-              })}
+              name="name"
+              placeholder="Your Full Name"
+              required
             />
-            {errors.name && (
-              <p className="text-red mt-1">
-                {errors.name.type === "required" && "This field is required."}
-                {errors.name.type === "maxLength" && "Max length is 100 char."}
-              </p>
-            )}
 
             <input
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5"
-              type="text"
+              type="email"
+              name="email"
               placeholder="EMAIL"
-              {...register("email", {
-                required: true,
-                pattern: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-              })}
+              required
             />
-            {errors.email && (
-              <p className="text-red mt-1">
-                {errors.email.type === "required" && "This field is required."}
-                {errors.email.type === "pattern" && "Invalid email address."}
-              </p>
-            )}
 
             <textarea
               className="w-full bg-blue font-semibold placeholder-opaque-black p-3 mt-5"
@@ -112,19 +103,8 @@ const Contact = () => {
               placeholder="MESSAGE"
               rows="4"
               cols="50"
-              {...register("message", {
-                required: true,
-                maxLength: 2000,
-              })}
+              required
             />
-            {errors.message && (
-              <p className="text-red mt-1">
-                {errors.message.type === "required" &&
-                  "This field is required."}
-                {errors.message.type === "maxLength" &&
-                  "Max length is 2000 char."}
-              </p>
-            )}
 
             <button
               className="p-5 bg-yellow font-semibold text-deep-blue mt-5 hover:bg-red hover:text-white transition duration-500"

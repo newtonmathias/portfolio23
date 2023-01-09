@@ -20,10 +20,7 @@ const Testimonials = () => {
           TESTIMONIALS
         </p>
         <LineGradient width="mx-auto w-2/5" />
-        <p className="mt-10">
-          Here's What People are Saying About My Work. Aliquam aliquet integer
-          ut fames odio in at. At magna ornare dictum lectus.
-        </p>
+        <p className="mt-10">Here's What People are Saying About My Work. </p>
       </motion.div>
 
       {/* TESTIMONIALS */}
@@ -42,7 +39,8 @@ const Testimonials = () => {
         >
           <p className="font-playfair text-6xl">“</p>
           <p className="text-center text-xl">
-            A auctor pharetra hendrerit mattis amet etiam interdum platea.
+            Newton very good developer, helped me to solve some react js issues,
+            will hire again
           </p>
         </motion.div>
 
@@ -60,8 +58,8 @@ const Testimonials = () => {
         >
           <p className="font-playfair text-6xl">“</p>
           <p className="text-center text-xl">
-            Aliquam aliquet integer ut fames odio in at. At magna ornare dictum
-            lectus.
+            Good developer to work with, with good react skills, will hire again
+            soon…
           </p>
         </motion.div>
 
@@ -79,7 +77,10 @@ const Testimonials = () => {
         >
           <p className="font-playfair text-6xl">“</p>
           <p className="text-center text-xl">
-            Fames odio in at. At magna ornare dictum lectus.
+            Newton is a highly reliable and skilled programmer with an in-depth
+            knowledge of the field. He's a multitasker who's capable of
+            maintaining existing complex legacy projects as well as creating
+            things from scratch.
           </p>
         </motion.div>
       </div>

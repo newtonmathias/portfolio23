@@ -55,7 +55,7 @@ const Projects = () => {
   const isDesktop = useMediaQuery("(min-width: 768px)");
 
   return (
-    <div className="pt-10 pb-24">
+    <section id="projects" className="pt-20 pb-24">
       <motion.div
         className="md:w-2/5 mx-auto text-center"
         initial="hidden"
@@ -76,9 +76,8 @@ const Projects = () => {
           </div>
         </div>
         <p className="mt-10 mb-10">
-          Aliquam, amet dui feugiat facilisi dui. Aliquam aliquet integer ut
-          fames odio in at. At magna ornare dictum lectus. Purus massa morbi
-          purus nec eget eleifend ut elit.
+          Here are some projects I have built ranging from small utilities to
+          large-scale web applications.
         </p>
       </motion.div>
       {isDesktop
@@ -88,7 +87,17 @@ const Projects = () => {
                 className="flex items-center justify-between"
                 key={project.id}
               >
-                <div className="basis-1/2 bg-blue z-1 hover:bg-transparent transition duration-500 rounded-md">
+                <motion.div
+                  className="basis-1/2 bg-blue z-1 hover:bg-transparent transition duration-500 rounded-md"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5 }}
+                  variants={{
+                    hidden: { opacity: 0, x: -50 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                >
                   <a href={project.demo} target="_blank" rel="noreferrer">
                     <img
                       src={project.image}
@@ -96,7 +105,7 @@ const Projects = () => {
                       className=" opacity-70"
                     />
                   </a>
-                </div>
+                </motion.div>
                 <div className="basis-1/2 flex flex-col items-end justify-between gap-5">
                   <p className="text-xl text-red">Featured Project</p>
                   <p className="text-2xl">{project.title}</p>
@@ -133,7 +142,17 @@ const Projects = () => {
                     <ArrowTopRightOnSquareIcon className="h-6 w-6" />
                   </a>
                 </div>
-                <div className="basis-1/2 bg-blue z-1 hover:bg-transparent transition duration-500 rounded-md">
+                <motion.div
+                  className="basis-1/2 bg-blue z-1 hover:bg-transparent transition duration-500 rounded-md"
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.5 }}
+                  transition={{ duration: 0.5 }}
+                  variants={{
+                    hidden: { opacity: 0, x: 50 },
+                    visible: { opacity: 1, x: 0 },
+                  }}
+                >
                   <a href={project.demo} target="_blank" rel="noreferrer">
                     <img
                       src={project.image}
@@ -141,7 +160,7 @@ const Projects = () => {
                       className=" opacity-70"
                     />
                   </a>
-                </div>
+                </motion.div>
               </div>
             )
           )
@@ -171,7 +190,7 @@ const Projects = () => {
               </a>
             </div>
           ))}
-    </div>
+    </section>
   );
 };
 

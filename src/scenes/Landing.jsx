@@ -48,17 +48,14 @@ const Landing = ({ setSelectedPage }) => {
         >
           <p className="text-6xl font-playfair z-10 text-center md:text-start">
             Newton {""}
-            <span
-              className="xs:relative xs:text-deep-blue xs:font-semibold z-20 xs:before:content-brush
-              before:absolute before:-left-[25px] before:-top-[70px] before:z-[-1]"
-            >
-              Mathias
-            </span>
+            Mathias
           </p>
 
           <p className="mt-10 mb-7 text-sm text-center md:text-start">
-            Adipiscing arcu, in aliquam fringilla cursus. Elit arcu elementum
-            viverra malesuada sem ac faucibus dolor. Sagittis scelerisque.
+            I am a software engineer with a background in full-stack development
+            and security engineering. I have a passion for building
+            high-quality, scalable systems that are both secure and
+            user-friendly.
           </p>
         </motion.div>
 
