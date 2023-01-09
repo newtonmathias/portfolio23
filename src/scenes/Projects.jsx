@@ -1,8 +1,8 @@
-import project1 from "../assets/portfolio1.png";
-import project2 from "../assets/portfolio2.png";
-import project3 from "../assets/portfolio3.png";
-import project4 from "../assets/portfolio4.png";
-import project5 from "../assets/portfolio5.png";
+import project2 from "/portfolio1.jpg";
+import project1 from "/portfolio2.jpg";
+import project3 from "/portfolio3.jpg";
+import project4 from "/portfolio4.png";
+import project5 from "/portfolio5.png";
 import LineGradient from "../components/LineGradient";
 import { motion } from "framer-motion";
 import { ArrowTopRightOnSquareIcon } from "@heroicons/react/24/outline";

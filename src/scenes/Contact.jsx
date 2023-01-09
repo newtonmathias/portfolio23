@@ -1,7 +1,7 @@
 import LineGradient from "../components/LineGradient";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import contactImage from "../assets/contact.jpg";
+import contactImage from "/contact.jpg";
 import React, { useRef } from "react";
 import emailjs from "emailjs-com";
 
